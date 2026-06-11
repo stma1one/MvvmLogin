@@ -1,12 +1,177 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MvvmLogin.Pages.LoginPage"
-             Title="LoginPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+<ContentPage
+    x:Class="MvvmLogin.Pages.LoginPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="התחברות למערכת"
+    BackgroundColor="#F9F9F9"
+    FlowDirection="RightToLeft">
+
+    <ScrollView VerticalOptions="Center">
+        <VerticalStackLayout
+            Padding="20"
+            HorizontalOptions="Center"
+            MaximumWidthRequest="440"
+            Spacing="24">
+
+            <!--  לוגו וכותרת ראשית  -->
+            <VerticalStackLayout
+                Margin="0,0,0,10"
+                HorizontalOptions="Center"
+                Spacing="8">
+                <Border
+                    BackgroundColor="#abf4ac"
+                    HeightRequest="80"
+                    HorizontalOptions="Center"
+                    StrokeShape="RoundRectangle 40"
+                    StrokeThickness="0"
+                    WidthRequest="80">
+                    <!--  תמונת לוגו או סמל. כאן השתמשנו בתווית טקסט כדוגמה לסמל  -->
+                    <Label
+                        FontSize="36"
+                        HorizontalOptions="Center"
+                        Text="🔑"
+                        VerticalOptions="Center" />
+                </Border>
+
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="32"
+                    HorizontalOptions="Center"
+                    Text="גני אורנים"
+                    TextColor="#0d631b" />
+
+                <Label
+                    FontSize="16"
+                    HorizontalOptions="Center"
+                    Text="מערכת ניהול חכמה"
+                    TextColor="#6E6E6E" />
+            </VerticalStackLayout>
+
+            <!--  כרטיס הטופס הראשי  -->
+            <Border
+                Margin="0"
+                Padding="24"
+                BackgroundColor="White"
+                Stroke="#bfcaba"
+                StrokeShape="RoundRectangle 16"
+                StrokeThickness="1">
+
+                <VerticalStackLayout Spacing="16">
+
+                    <Label
+                        Margin="0,0,0,8"
+                        FontAttributes="Bold"
+                        FontSize="24"
+                        HorizontalOptions="Center"
+                        Text="התחברות למערכת"
+                        TextColor="#1A1C1C" />
+
+                    <!--  תיבת שגיאה (Error Alert Box)  -->
+                    <!--
+                        תלמידים:
+                        1. יש לקשר את המאפיין IsVisible למאפיין ב-ViewModel המציין אם יש שגיאה (למשל: IsVisible="{Binding HasError}")
+                    -->
+                    <Border
+                        x:Name="ErrorBox"
+                        Padding="12"
+                        BackgroundColor="#ffdad6"
+                        HorizontalOptions="Center"
+                        IsVisible="False"
+                        Stroke="#ba1a1a"
+                        StrokeShape="RoundRectangle 8"
+                        StrokeThickness="1">
+
+                        <Grid ColumnDefinitions="Auto, *" ColumnSpacing="8">
+                            <Label
+                                Grid.Column="0"
+                                Text="⚠️"
+                                TextColor="#ba1a1a"
+                                VerticalOptions="Center" />
+                            <!--  תלמידים: יש לקשר את ה-Text למאפיין ב-ViewModel המכיל את הודעת השגיאה (למשל: Text="{Binding ErrorMessage}")  -->
+                            <Label
+                                x:Name="ErrorTextLabel"
+                                Grid.Column="1"
+                                FontSize="14"
+                                Text="שם המשתמש או הסיסמה אינם נכונים."
+                                TextColor="#ba1a1a"
+                                VerticalOptions="Center" />
+                        </Grid>
+                    </Border>
+
+                    <!--  שדה שם משתמש או אימייל  -->
+                    <VerticalStackLayout Spacing="6">
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="14"
+                            Text="שם משתמש או אימייל"
+                            TextColor="#1A1C1C" />
+
+                        <!--  תלמידים: יש לקשר את מאפיין Text של ה-Entry למאפיין ב-ViewModel (למשל: Username)  -->
+                        <Entry
+                            x:Name="UsernameEntry"
+                            HeightRequest="48"
+                            Keyboard="Email"
+                            Placeholder="הכנס שם משתמש או אימייל"
+                            PlaceholderColor="#ACACAC"
+                            TextColor="Black" />
+                    </VerticalStackLayout>
+
+                    <!--  שדה סיסמה  -->
+                    <VerticalStackLayout Spacing="6">
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="14"
+                            Text="סיסמה"
+                            TextColor="#1A1C1C" />
+
+                        <!--  תלמידים: יש לקשר את מאפיין Text של ה-Entry למאפיין ב-ViewModel (למשל: Password)  -->
+                        <Entry
+                            x:Name="PasswordEntry"
+                            HeightRequest="48"
+                            IsPassword="True"
+                            Placeholder="הכנס סיסמה"
+                            PlaceholderColor="#ACACAC"
+                            TextColor="Black" />
+                    </VerticalStackLayout>
+
+                    <!--  קישור לשכחת סיסמה  -->
+                    <Label
+                        Margin="0,4,0,8"
+                        FontSize="14"
+                        HorizontalOptions="Start"
+                        Text="שכחת סיסמה?"
+                        TextColor="#0d631b" />
+
+                    <!--  כפתור התחברות  -->
+                    <!--  תלמידים: יש לקשר את מאפיין Command למאפיין ה-Command ב-ViewModel (למשל: LoginCommand)  -->
+                    <Button
+                        x:Name="LoginButton"
+                        Margin="0,8,0,0"
+                        BackgroundColor="#0d631b"
+                        CornerRadius="8"
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        HeightRequest="50"
+                        Text="התחבר"
+                        TextColor="White" />
+
+                </VerticalStackLayout>
+            </Border>
+
+            <!--  קישור למעבר להרשמה  -->
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="4">
+                <Label
+                    FontSize="16"
+                    Text="אין לך חשבון?"
+                    TextColor="#6E6E6E" />
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="16"
+                    Text="צור חשבון"
+                    TextColor="#0d631b" />
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

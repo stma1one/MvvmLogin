@@ -4,11 +4,12 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:MvvmLogin.Pages"
-    Title="MvvmLogin">
+    Title="גני אורנים"
+    FlowDirection="RightToLeft">
 
     <ShellContent
-        Title="Home"
+        Title="התחברות"
         ContentTemplate="{DataTemplate local:LoginPage}"
-        Route="MainPage" />
+        Route="LoginPage" />
 
 </Shell>

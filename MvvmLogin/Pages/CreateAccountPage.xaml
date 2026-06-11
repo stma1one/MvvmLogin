@@ -2,11 +2,177 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MvvmLogin.Pages.CreateAccountPage"
-             Title="CreateAccountPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Title="הרשמה למערכת"
+             BackgroundColor="#F9F9F9"
+             FlowDirection="RightToLeft">
+
+    <ScrollView VerticalOptions="CenterAndExpand">
+        <VerticalStackLayout Spacing="24" Padding="20" MaximumWidthRequest="440" HorizontalOptions="Center">
+
+            <!-- לוגו וכותרת ראשית -->
+            <VerticalStackLayout Spacing="8" HorizontalOptions="Center" Margin="0,0,0,10">
+                <Border StrokeShape="RoundRectangle 40"
+                        WidthRequest="80"
+                        HeightRequest="80"
+                        BackgroundColor="#abf4ac"
+                        StrokeThickness="0"
+                        HorizontalOptions="Center">
+                    <Label Text="👤" 
+                           FontSize="36" 
+                           HorizontalOptions="Center" 
+                           VerticalOptions="Center" />
+                </Border>
+
+                <Label Text="גני אורנים"
+                       FontSize="32"
+                       FontAttributes="Bold"
+                       TextColor="#0d631b"
+                       HorizontalOptions="Center" />
+
+                <Label Text="מערכת ניהול חכמה"
+                       FontSize="16"
+                       TextColor="#6E6E6E"
+                       HorizontalOptions="Center" />
+            </VerticalStackLayout>
+
+            <!-- כרטיס הטופס הראשי -->
+            <Border StrokeShape="RoundRectangle 16"
+                    Stroke="#bfcaba"
+                    StrokeThickness="1"
+                    BackgroundColor="White"
+                    Padding="24"
+                    Margin="0">
+
+                <VerticalStackLayout Spacing="16">
+
+                    <Label Text="יצירת חשבון חדש"
+                           FontSize="24"
+                           FontAttributes="Bold"
+                           TextColor="#1A1C1C"
+                           HorizontalOptions="Center"
+                           Margin="0,0,0,8" />
+
+                    <!-- תיבת שגיאה (Error Alert Box) -->
+                    <!-- תלמידים:
+                         1. יש לקשר את המאפיין IsVisible למאפיין ב-ViewModel המציין אם יש שגיאה (למשל: IsVisible="{Binding HasError}")
+                    -->
+                    <Border x:Name="ErrorBox"
+                            StrokeShape="RoundRectangle 8"
+                            Stroke="#ba1a1a"
+                            StrokeThickness="1"
+                            BackgroundColor="#ffdad6"
+                            Padding="12"
+                            IsVisible="False">
+
+                        <Grid ColumnDefinitions="Auto, *" ColumnSpacing="8">
+                            <Label Grid.Column="0" 
+                                   Text="⚠️" 
+                                   TextColor="#ba1a1a" 
+                                   VerticalOptions="Center" />
+                            <!-- תלמידים: יש לקשר את ה-Text למאפיין ב-ViewModel המכיל את הודעת השגיאה (למשל: Text="{Binding ErrorMessage}") -->
+                            <Label Grid.Column="1" 
+                                   x:Name="ErrorTextLabel"
+                                   Text="שם המשתמש או האימייל כבר קיימים במערכת."
+                                   TextColor="#ba1a1a"
+                                   FontSize="14"
+                                   VerticalOptions="Center" />
+                        </Grid>
+                    </Border>
+
+                    <!-- שדה שם משתמש -->
+                    <VerticalStackLayout Spacing="6">
+                        <Label Text="שם משתמש"
+                               FontSize="14"
+                               FontAttributes="Bold"
+                               TextColor="#1A1C1C" />
+
+                        <!-- תלמידים: יש לקשר את מאפיין Text של ה-Entry למאפיין ב-ViewModel (למשל: Username) -->
+                        <Entry x:Name="UsernameEntry"
+                               Placeholder="בחר שם משתמש"
+                               HeightRequest="48"
+                               TextColor="Black"
+                               PlaceholderColor="#ACACAC" />
+                    </VerticalStackLayout>
+
+                    <!-- שדה אימייל -->
+                    <VerticalStackLayout Spacing="6">
+                        <Label Text="כתובת אימייל"
+                               FontSize="14"
+                               FontAttributes="Bold"
+                               TextColor="#1A1C1C" />
+
+                        <!-- תלמידים: יש לקשר את מאפיין Text של ה-Entry למאפיין ב-ViewModel (למשל: Email) -->
+                        <Entry x:Name="EmailEntry"
+                               Placeholder="הכנס אימייל (למשל: email@example.com)"
+                               HeightRequest="48"
+                               TextColor="Black"
+                               PlaceholderColor="#ACACAC"
+                               Keyboard="Email" />
+                    </VerticalStackLayout>
+
+                    <!-- שדה סיסמה -->
+                    <VerticalStackLayout Spacing="6">
+                        <Label Text="סיסמה"
+                               FontSize="14"
+                               FontAttributes="Bold"
+                               TextColor="#1A1C1C" />
+
+                        <!-- תלמידים: יש לקשר את מאפיין Text של ה-Entry למאפיין ב-ViewModel (למשל: Password) -->
+                        <Entry x:Name="PasswordEntry"
+                               Placeholder="בחר סיסמה מאובטחת"
+                               IsPassword="True"
+                               HeightRequest="48"
+                               TextColor="Black"
+                               PlaceholderColor="#ACACAC" />
+                    </VerticalStackLayout>
+
+                    <!-- שדה תמונת פרופיל -->
+                    <VerticalStackLayout Spacing="6">
+                        <Label Text="כתובת תמונת פרופיל (אופציונלי)"
+                               FontSize="14"
+                               FontAttributes="Bold"
+                               TextColor="#1A1C1C" />
+
+                        <!-- תלמידים: יש לקשר את מאפיין Text של ה-Entry למאפיין ב-ViewModel (למשל: ProfileImageUrl) -->
+                        <Entry x:Name="ProfileImageUrlEntry"
+                               Placeholder="הכנס קישור לתמונה (URL)"
+                               HeightRequest="48"
+                               TextColor="Black"
+                               PlaceholderColor="#ACACAC" />
+                    </VerticalStackLayout>
+
+                    <!-- כפתור הרשמה -->
+                    <!-- תלמידים: יש לקשר את מאפיין Command למאפיין ה-Command ב-ViewModel (למשל: CreateAccountCommand) -->
+                    <Button x:Name="CreateAccountButton"
+                            Text="הרשם והמשך"
+                            FontAttributes="Bold"
+                            FontSize="18"
+                            BackgroundColor="#0d631b"
+                            TextColor="White"
+                            HeightRequest="50"
+                            CornerRadius="8"
+                            Margin="0,8,0,0" />
+
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- קישור למעבר להתחברות -->
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="4">
+                <Label Text="יש לך כבר חשבון?" 
+                       FontSize="16" 
+                       TextColor="#6E6E6E" />
+                <Label Text="התחבר כאן" 
+                       FontSize="16" 
+                       FontAttributes="Bold" 
+                       TextColor="#0d631b">
+                    <Label.GestureRecognizers>
+                        <!-- תלמידים: יש להוסיף TapGestureRecognizer עם Command לחזרה לעמוד ההתחברות, 
+                             או לטפל באירוע לחיצה (Tapped) ב-Code-Behind -->
+                        <TapGestureRecognizer x:Name="LoginLinkGesture" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
