@@ -3,7 +3,9 @@
     x:Class="MvvmLogin.Pages.LoginPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:MvvmLogin.ViewModels"
     Title="התחברות למערכת"
+    x:DataType="viewmodels:LoginPageViewModel"
     BackgroundColor="#F9F9F9"
     FlowDirection="RightToLeft">
 
@@ -77,7 +79,7 @@
                         Padding="12"
                         BackgroundColor="#ffdad6"
                         HorizontalOptions="Center"
-                        IsVisible="False"
+                        IsVisible="{Binding IsNotLoggedIn}"
                         Stroke="#ba1a1a"
                         StrokeShape="RoundRectangle 8"
                         StrokeThickness="1">
@@ -93,7 +95,7 @@
                                 x:Name="ErrorTextLabel"
                                 Grid.Column="1"
                                 FontSize="14"
-                                Text="שם המשתמש או הסיסמה אינם נכונים."
+                                Text="{Binding Error}"
                                 TextColor="#ba1a1a"
                                 VerticalOptions="Center" />
                         </Grid>
@@ -114,6 +116,7 @@
                             Keyboard="Email"
                             Placeholder="הכנס שם משתמש או אימייל"
                             PlaceholderColor="#ACACAC"
+                            Text="{Binding UserName}"
                             TextColor="Black" />
                     </VerticalStackLayout>
 
@@ -132,6 +135,7 @@
                             IsPassword="True"
                             Placeholder="הכנס סיסמה"
                             PlaceholderColor="#ACACAC"
+                            Text="{Binding Password}"
                             TextColor="Black" />
                     </VerticalStackLayout>
 
@@ -148,7 +152,8 @@
                     <Button
                         x:Name="LoginButton"
                         Margin="0,8,0,0"
-                        BackgroundColor="#0d631b"
+                        BackgroundColor="Black"
+                        Command="{Binding LoginCommand}"
                         CornerRadius="8"
                         FontAttributes="Bold"
                         FontSize="18"

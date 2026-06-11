@@ -47,10 +47,9 @@ namespace MvvmLogin.Services
             if (string.IsNullOrWhiteSpace(u.Username) || string.IsNullOrWhiteSpace(u.Password))
                 return false;
 
-            return _users.Any(u => 
-                (u.Username.Equals(u.Username, StringComparison.OrdinalIgnoreCase) || 
-                 u.Email.Equals(u.Username, StringComparison.OrdinalIgnoreCase)) && 
-                u.Password == u.Password);
+            return _users.Any(us => 
+                (us.Username.Equals(u.Username)  && 
+                us.Password == u.Password));
         }
 
         /// <summary>
