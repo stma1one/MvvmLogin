@@ -11,10 +11,8 @@ public partial class LoginPage : ContentPage
 	{
 		InitializeComponent();
 
-		// תלמידים: כאן יש לקשר את ה-ViewModel של דף זה ל-BindingContext.
-		// דוגמה למימוש:
-		// BindingContext = new ViewModels.LoginPageViewModel();
-
+		// קישור ה-ViewModel ל-BindingContext של הדף הנוכחי
+		// קישור זה מאפשר ל-XAML לבצע Binding למאפיינים ולפקודות המוגדרים ב-LoginPageViewModel
 		BindingContext = new LoginPageViewModel();
 	}
 }

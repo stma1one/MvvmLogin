@@ -9,6 +9,8 @@
     BackgroundColor="#F9F9F9"
     FlowDirection="RightToLeft">
 
+    <!-- הגדרת מרחב השמות (xmlns:viewmodels) וה-DataType המקומפל (x:DataType) מוגדרים בתגית ה-ContentPage לעיל -->
+
     <ScrollView VerticalOptions="Center">
         <VerticalStackLayout
             Padding="20"
@@ -71,8 +73,8 @@
 
                     <!--  תיבת שגיאה (Error Alert Box)  -->
                     <!--
-                        תלמידים:
-                        1. יש לקשר את המאפיין IsVisible למאפיין ב-ViewModel המציין אם יש שגיאה (למשל: IsVisible="{Binding HasError}")
+                        קישור מאפיין הראות (IsVisible) למאפיין הבוליאני IsNotLoggedIn ב-ViewModel,
+                        המאפשר להציג את השגיאה רק כאשר הניסיון להתחבר נכשל.
                     -->
                     <Border
                         x:Name="ErrorBox"
@@ -90,7 +92,7 @@
                                 Text="⚠️"
                                 TextColor="#ba1a1a"
                                 VerticalOptions="Center" />
-                            <!--  תלמידים: יש לקשר את ה-Text למאפיין ב-ViewModel המכיל את הודעת השגיאה (למשל: Text="{Binding ErrorMessage}")  -->
+                            <!--  קישור מאפיין ה-Text למאפיין ה-Error ב-ViewModel המכיל את הודעת השגיאה  -->
                             <Label
                                 x:Name="ErrorTextLabel"
                                 Grid.Column="1"
@@ -109,7 +111,7 @@
                             Text="שם משתמש או אימייל"
                             TextColor="#1A1C1C" />
 
-                        <!--  תלמידים: יש לקשר את מאפיין Text של ה-Entry למאפיין ב-ViewModel (למשל: Username)  -->
+                        <!--  קישור דו-כיווני של שדה הטקסט למאפיין UserName ב-ViewModel  -->
                         <Entry
                             x:Name="UsernameEntry"
                             HeightRequest="48"
@@ -128,7 +130,7 @@
                             Text="סיסמה"
                             TextColor="#1A1C1C" />
 
-                        <!--  תלמידים: יש לקשר את מאפיין Text של ה-Entry למאפיין ב-ViewModel (למשל: Password)  -->
+                        <!--  קישור דו-כיווני של שדה הסיסמה למאפיין Password ב-ViewModel  -->
                         <Entry
                             x:Name="PasswordEntry"
                             HeightRequest="48"
@@ -148,7 +150,7 @@
                         TextColor="#0d631b" />
 
                     <!--  כפתור התחברות  -->
-                    <!--  תלמידים: יש לקשר את מאפיין Command למאפיין ה-Command ב-ViewModel (למשל: LoginCommand)  -->
+                    <!--  קישור כפתור ההתחברות ל-Command המתאים ב-ViewModel (LoginCommand) לביצוע הלוגיקה  -->
                     <Button
                         x:Name="LoginButton"
                         Margin="0,8,0,0"

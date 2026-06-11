@@ -47,6 +47,7 @@ namespace MvvmLogin.Services
             if (string.IsNullOrWhiteSpace(u.Username) || string.IsNullOrWhiteSpace(u.Password))
                 return false;
 
+            // בדיקה האם קיים משתמש באוסף הסטטי ששם המשתמש והסיסמה שלו תואמים בדיוק לפרטים שהוזנו
             return _users.Any(us => 
                 (us.Username.Equals(u.Username)  && 
                 us.Password == u.Password));
